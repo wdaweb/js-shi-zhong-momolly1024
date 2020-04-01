@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://img.technews.tw/wp-content/uploads/2019/04/29120911/jeremy-thomas-99326-unsplash-e1556510971779.jpg");
+            background-repeat: repeat;
+
+        }
+
+        #clock {
+            width: 250px;
+            height: 250px;
+            background-image: linear-gradient(to right top, #83adeb, #aa99e8, #d680ce, #f4659e, #f95960);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            transform: translateY(60%);
+            border: rgb(253, 200, 200) solid 2px;
+            box-shadow: 0px 0px 24px 5px #fdd5d5;
+        }
+
+        #hour {
+            position: absolute;
+            width: 20%;
+            height: 6px;
+            background: rgb(250, 205, 222);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            /* 往左 30% + 寬度 20% = 圓心位置 50%*/
+            left: 30%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #minute {
+            position: absolute;
+            width: 45%;
+            height: 6px;
+            background: rgb(255, 206, 198);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            left: 5%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #second {
+            position: absolute;
+            width: 48%;
+            height: 4px;
+            background: rgb(248, 223, 227);
+            top: calc(50% - 2px);
+            border-radius: 2px;
+            left: 2%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        .try {
+            animation: try 3s infinite ease forwards alternate;
+        }
+
+        @keyframes try {
+            0% {
+                background-image: linear-gradient(to right top, #83adeb, #aa99e8, #d680ce, #f4659e, #f95960);
+                ;
+            }
+
+            50% {
+
+                transform: scale(1.2) translate(20%, 20%);
+            }
+
+            100% {
+
+                transform: scale(1.6) translate(-10%, 20%);
+            }
+        }
+
+        p {
+            /* margin: auto; */
+            transform: translateY(200%);
+            text-align: center;
+            font-size: 30px;
+            color: rgb(252, 233, 233);
+            font-family: 微軟正黑體;
+            text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.2em;
+
+        }
+
+        #time {
+            transform: translateY(200%);
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+            border: rgb(255, 225, 225) solid 2px;
+
+        }
+
+
+        #time:hover {
+            background-image: linear-gradient(to bottom, #f2d5c7, #ead0ce, #ddccd2, #cfcacf, #c6c6c6);
+            color: rgb(0, 0, 0);
+            border: rgb(250, 159, 123) solid 2px;
+            box-shadow: 0px 0px 24px 5px #e2ebf3;
+
+        }
+
+
+
+        .btn {
+            width: 150px;
+            height: 100px;
+            background-image: linear-gradient(to right top, #d31539, #a60050, #6e0b56, #341448, #04082c);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 微軟正黑體;
+
+        }
+
+        .btn:hover {
+            background-image: linear-gradient(to left bottom, #d63c59, #b52e6b, #8a2c74, #5a2e72, #242b66);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 微軟正黑體;
+
+
+        }
+
+
+        #left {
+            position: absolute;
+            width: 10%;
+            height: 3px;
+            background: rgb(172, 146, 146);
+            top: calc(50% - 2px);
+            left: 0%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+
+        #right {
+            position: absolute;
+            width: 10%;
+            height: 3px;
+            background: rgb(172, 146, 146);
+            top: calc(50% - 2px);
+            left: 90%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #top {
+            position: absolute;
+            width: 10%;
+            height: 3px;
+            background: rgb(172, 146, 146);
+            top: calc(50% - 2px);
+            top: 0%;
+            left: 40%;
+            transform: rotate(270deg);
+            transform-origin: right center;
+        }
+
+        #bottom {
+            position: absolute;
+            width: 10%;
+            height: 3px;
+            background: rgb(172, 146, 146);
+            top: calc(50% - 2px);
+            top: 99%;
+            left: 40%;
+            transform: rotate(90deg);
+            transform-origin: right center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="stop()" class="btn">時鐘不要動!!!!(點ㄌ就知道OuO)</button>
+
+    <div id="clock" class="try">
+        <div id="top"> </div>
+        <div id="right"> </div>
+        <div id="bottom"> </div>
+        <div id="left"> </div>
+
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <br>
+    <div>
+        <p>
+            <p id="time"> </p>
+
+        </p>
+        <br>
+
+        <!-- <body onload="startTime()">
+            簡單的時鐘
+            <div id="clock2"></div> -->
+    </div>
+
+    <script>
+        const hour = document.getElementById("hour");
+        const minute = document.getElementById("minute");
+        const second = document.getElementById("second");
+
+        const setDate = () => {
+            const now = new Date();
+            hour.style.transform = `rotate(${now.getHours() * 30 + 90}deg)`;
+            minute.style.transform = `rotate(${now.getMinutes() * 6 + 90}deg)`;
+            second.style.transform = `rotate(${now.getSeconds() * 6 + 90}deg)`;
+
+
+
+        }
+
+        setDate();
+        setInterval(setDate, 1000);
+
+        function stop() {
+            document.getElementById("clock").classList.remove("try");
+        }
+
+
+        const now = new Date();
+        let show = now.toLocaleString()
+        const time = document.getElementById("time");
+        time.innerText = ` ${show} `;
+
+        const run = setInterval(() => {
+            small.innerText = ` ${show} `;
+
+        }, 1000)
+
+
+
+
+        // function startTime() {
+        //     var today = new Date();
+        //     var hh = today.getHours();
+        //     var mm = today.getMinutes();
+        //     var ss = today.getSeconds();
+        //     mm = checkTime(mm);
+        //     ss = checkTime(ss);
+        //     document.getElementById('clock2').innerHTML = hh + ":" + mm + ":" + ss;
+        //     var timeoutId = setTimeout(startTime, 500);
+        // }
+
+        // function checkTime(i) {
+        //     if (i < 10) {
+        //         i = "0" + i;
+        //     }
+        //     return i;
+        // }
+
+    </script>
+</body>
+
+</html>
