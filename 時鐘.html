@@ -83,6 +83,24 @@
             }
         }
 
+
+
+
+        .try2 {
+            animation: try2 3s infinite ease forwards alternate;
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
         p {
             /* margin: auto; */
             transform: translateY(200%);
@@ -179,23 +197,213 @@
             transform: rotate(90deg);
             transform-origin: right center;
         }
+
+
+
+        #clock2 {
+            width: 150px;
+            height: 150px;
+            background-image: url("https://i.imgur.com/rxlrdY9.png");
+            border-radius: 50%;
+            margin: 0 0 0 100px;
+            position: relative;
+            /* transform: translateY(10%); */
+            border: rgb(253, 200, 200) solid 2px;
+            box-shadow: 0px 0px 24px 5px #7d95e2;
+            display: inline-block;
+        }
+
+        #hour2 {
+            position: absolute;
+            width: 20%;
+            height: 6px;
+            background: rgb(250, 205, 222);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            /* 往左 30% + 寬度 20% = 圓心位置 50%*/
+            left: 30%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #minute2 {
+            position: absolute;
+            width: 45%;
+            height: 6px;
+            background: rgb(255, 206, 198);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            left: 5%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #second2 {
+            position: absolute;
+            width: 48%;
+            height: 4px;
+            background: rgb(248, 223, 227);
+            top: calc(50% - 2px);
+            border-radius: 2px;
+            left: 2%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+.gmt{
+    color: white;
+}
+
+
+.gmtice{
+    color: white;
+ 
+    font-size: 16px;
+margin-bottom: 0;
+
+}
+
+
+#clock3 {
+            width: 150px;
+            height: 150px;
+            background-image: url("https://i.imgur.com/E6Lzynl.png");
+            border-radius: 50%;
+            margin: 0 0 0  1200px;
+            position: relative;
+            transform: translateX(10%);
+            border: rgb(253, 200, 200) solid 2px;
+            box-shadow: 0px 0px 24px 5px #7d95e2;
+        }
+
+        #hour3 {
+            position: absolute;
+            width: 20%;
+            height: 6px;
+            background: rgb(250, 205, 222);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            /* 往左 30% + 寬度 20% = 圓心位置 50%*/
+            left: 30%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #minute3 {
+            position: absolute;
+            width: 45%;
+            height: 6px;
+            background: rgb(255, 206, 198);
+            top: calc(50% - 3px);
+            border-radius: 2px;
+            left: 5%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+        #second3 {
+            position: absolute;
+            width: 48%;
+            height: 4px;
+            background: rgb(248, 223, 227);
+            top: calc(50% - 2px);
+            border-radius: 2px;
+            left: 2%;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+
+
+        .try3 {
+            animation: try3 3s infinite ease forwards alternate;
+        }
+
+        @keyframes try3 {
+            
+
+            50% {
+
+                transform: scale(1.2) translate(-10%, -10%);
+            }
+
+            100% {
+
+                transform: scale(1.6) translate(-40%, 40%);
+            }
+        }
+
+
+
+        @keyframes try2 {
+           
+
+           50% {
+
+               transform: scale(1.2) translate(20%, 20%);
+           }
+
+           100% {
+
+               transform: scale(1.6) translate(40%, -30%);
+           }
+       }
+
+
+
+
     </style>
 </head>
 
 <body>
 
     <button onclick="stop()" class="btn">時鐘不要動!!!!(點ㄌ就知道OuO)</button>
+    <div id="clock3" class="try3">
+        <div id="top"> </div>
+        <div id="right"> </div>
+        <div id="bottom"> </div>
+        <div id="left"> </div>
+        <p class="gmtice"></p>
+        <div id="hour3"></div>
+        <div id="minute3"></div>
+        <div id="second3"></div>
+    </div>
+
 
     <div id="clock" class="try">
         <div id="top"> </div>
         <div id="right"> </div>
         <div id="bottom"> </div>
         <div id="left"> </div>
-
+<p class="gmt">GMT+8</p>
         <div id="hour"></div>
         <div id="minute"></div>
         <div id="second"></div>
     </div>
+
+
+
+    <div id="clock2" class="try2">
+        <div id="top"> </div>
+        <div id="right"> </div>
+        <div id="bottom"> </div>
+        <div id="left"> </div>
+        <p class="gmtice"></p>
+        <div id="hour2"></div>
+        <div id="minute2"></div>
+        <div id="second2"></div>
+    </div>
+
+
+
+
+   
+
+
+
+
+
+
+
     <br>
     <div>
         <p>
@@ -204,12 +412,20 @@
         </p>
         <br>
 
+
+
+        
+
+
+
         <!-- <body onload="startTime()">
             簡單的時鐘
             <div id="clock2"></div> -->
     </div>
 
     <script>
+
+
         const hour = document.getElementById("hour");
         const minute = document.getElementById("minute");
         const second = document.getElementById("second");
@@ -227,15 +443,72 @@
         setDate();
         setInterval(setDate, 1000);
 
+
+
         function stop() {
             document.getElementById("clock").classList.remove("try");
+            document.getElementById("clock2").classList.remove("try2");
+            document.getElementById("clock3").classList.remove("try3");
         }
+
+
+
 
 
         const now = new Date();
         let show = now.toLocaleString()
         const time = document.getElementById("time");
         time.innerText = ` ${show} `;
+
+
+
+        const hour2 = document.getElementById("hour2");
+        const minute2 = document.getElementById("minute2");
+        const second2 = document.getElementById("second2");
+        const setDate2 = () => {
+            const now2 = new Date();
+            hour2.style.transform = `rotate(${(now2.getHours()-8) * 30 + 90}deg)`;
+            minute2.style.transform = `rotate(${now2.getMinutes() * 6 + 90}deg)`;
+            second2.style.transform = `rotate(${now2.getSeconds() * 6 + 90}deg)`;
+        }
+        setDate2();
+        setInterval(setDate2, 1000);
+
+
+
+
+
+
+
+
+
+
+
+        const hour3 = document.getElementById("hour3");
+        const minute3 = document.getElementById("minute3");
+        const second3 = document.getElementById("second3");
+        const setDate3 = () => {
+            const now3 = new Date();
+            hour3.style.transform = `rotate(${(now3.getHours()+3) * 30 + 90}deg)`;
+            minute3.style.transform = `rotate(${now3.getMinutes() * 6 + 90}deg)`;
+            second3.style.transform = `rotate(${now3.getSeconds() * 6 + 90}deg)`;
+        }
+        setDate3();
+        setInterval(setDate3, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // const run = setInterval(() => {
         //     small.innerText = ` ${show} `;
